@@ -62,6 +62,8 @@ import lime.utils.Assets;
 import openfl.display.BlendMode;
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
+import android.AndroidControls;
+import ui.FlxVirtualPad;
 
 #if windows
 import Discord.DiscordClient;
@@ -109,6 +111,7 @@ class PlayState extends MusicBeatState
 	#end
 
 	private var vocals:FlxSound;
+	var vpad:FlxVirtualPad;
 
 	private var dad:Character;
 	private var gf:Character;
@@ -2071,6 +2074,15 @@ class PlayState extends MusicBeatState
 
                 #if android
 	        addAndroidControls();
+	        
+			if (SONG.song.toLowerCase() == "tutorial || milf || extermination || expurgation || censory-superload") 
+			{
+			    _pad = new FlxVirtualPad(NONE, D);
+		        _pad.alpha = 0.75;
+		        _pad.visible = false;
+		        _pad.cameras = [camcontrol];
+		        add(_pad);
+			}
                 #end
 
 		// if (SONG.song == 'South')
@@ -5109,10 +5121,10 @@ class PlayState extends MusicBeatState
 			//Dodge code, yes it's bad but oh well. -Haz
 			//var dodgeButton = controls.ACCEPT; //I have no idea how to add custom controls so fuck it. -Haz
 
-			if(controls.ACCEPT)
+			if(controls.ACCEPT || vpad.buttonA.justPressed)
 				trace('butttonpressed');
 
-			if(controls.ACCEPT && !bfDodging && bfCanDodge){
+			if(controls.ACCEPT || vpad.buttonA.justPressed && !bfDodging && bfCanDodge){
 				trace('DODGE START!');
 				bfDodging = true;
 				bfCanDodge = false;
@@ -5149,7 +5161,7 @@ class PlayState extends MusicBeatState
 			//Dodge code, yes it's bad but oh well. -Haz
 			//var dodgeButton = controls.ACCEPT; //I have no idea how to add custom controls so fuck it. -Haz
 			//Haha Copy-paste LOL (although modified a bit)
-			if(controls.ACCEPT)
+			if(controls.ACCEPT || vpad.buttonA.justPressed)
 				trace('butttonpressed');
 
 			if(controls.ACCEPT && !bfDodging && bfCanDodge){
@@ -5189,10 +5201,10 @@ class PlayState extends MusicBeatState
 			//Dodge code, yes it's bad but oh well. -Haz
 			//var dodgeButton = controls.ACCEPT; //I have no idea how to add custom controls so fuck it. -Haz
 			//Haha Copy-paste LOL (although modified a bit)
-			if(FlxG.keys.justPressed.SPACE)
+			if(controls.ACCEPT || vpad.buttonA.justPressed)
 				trace('butttonpressed');
 
-			if(FlxG.keys.justPressed.SPACE && !bfDodging && bfCanDodge){
+			if(controls.ACCEPT || vpad.buttonA.justPressed && !bfDodging && bfCanDodge){
 				trace('DODGE START!');
 				bfDodging = true;
 				bfCanDodge = false;
@@ -5229,10 +5241,10 @@ class PlayState extends MusicBeatState
 			//Dodge code, yes it's bad but oh well. -Haz
 			//var dodgeButton = controls.ACCEPT; //I have no idea how to add custom controls so fuck it. -Haz
 			//Haha Copy-paste LOL (although modified a bit) -Again lol
-			if(FlxG.keys.justPressed.SPACE)
+			if(controls.ACCEPT || vpad.buttonA.justPressed)
 				trace('butttonpressed');
 
-			if(FlxG.keys.justPressed.SPACE && !bfDodging && bfCanDodge){
+			if(controls.ACCEPT || vpad.buttonA.justPressed && !bfDodging && bfCanDodge){
 				trace('DODGE START!');
 				bfDodging = true;
 				bfCanDodge = false;

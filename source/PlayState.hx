@@ -63,7 +63,7 @@ import openfl.display.BlendMode;
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
 import android.AndroidControls;
-import android.FlxVirtualPad;
+import ui.FlxVirtualPad;
 
 #if windows
 import Discord.DiscordClient;
@@ -2077,11 +2077,11 @@ class PlayState extends MusicBeatState
 	        
 			if (SONG.song.toLowerCase() == "tutorial || milf || extermination || expurgation || censory-superload") 
 			{
-			    _pad = new FlxVirtualPad(NONE, D);
-		        _pad.alpha = 0.75;
-		        _pad.visible = false;
-		        _pad.cameras = [camcontrol];
-		        add(_pad);
+			    vpad = new FlxVirtualPad(NONE, D);
+		        vpad.alpha = 0.75;
+		        vpad.visible = false;
+		        vpad.cameras = [camcontrol];
+		        add(vpad);
 			}
                 #end
 

@@ -2080,7 +2080,7 @@ class PlayState extends MusicBeatState
 			    vpad = new FlxVirtualPad(NONE, A);
 		        vpad.alpha = 0.75;
 		        vpad.visible = false;
-		        vpad.cameras = [PadCamera];
+		        vpad.cameras = [];
 		        add(vpad);
 			}
                 #end

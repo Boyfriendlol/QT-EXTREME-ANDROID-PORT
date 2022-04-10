@@ -63,7 +63,7 @@ import openfl.display.BlendMode;
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
 import android.AndroidControls;
-import ui.FlxVirtualPad;
+import android.FlxVirtualPad;
 
 #if windows
 import Discord.DiscordClient;

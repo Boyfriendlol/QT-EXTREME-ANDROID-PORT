@@ -2342,7 +2342,6 @@ class PlayState extends MusicBeatState
 		{
 			_virtualpad.visible = true;
 		}
-		#end
 	        #end
 
 		generateStaticArrows(0);

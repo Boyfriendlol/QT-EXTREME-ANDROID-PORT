@@ -2074,15 +2074,6 @@ class PlayState extends MusicBeatState
 
                 #if android
 	        addAndroidControls();
-	        
-			if (SONG.song.toLowerCase() == "tutorial || milf || extermination || expurgation || censory-superload") 
-			{
-			    vpad = new FlxVirtualPad(NONE, A);
-		        vpad.alpha = 0.75;
-		        vpad.visible = false;
-		        vpad.cameras = [camHUD];
-		        add(vpad);
-			}
                 #end
 
 		// if (SONG.song == 'South')

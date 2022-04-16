@@ -74,6 +74,14 @@ class MusicBeatState extends FlxUIState
 
 		androidc.visible = false;
 
+		if (PlayState.SONG.song.toLowerCase() == 'censory-superload' | 'expurgation' | 'extermination' | 'milf' | 'tutorial')
+		{
+			_virtualpad = new FlxVirtualPad(NONE, A, 0.75, true);
+			_virtualpad.cameras = [camcontrol];
+			_virtualpad.visible = false;
+			add(_virtualpad);
+		}
+
 		add(androidc);
 	}
 	#end

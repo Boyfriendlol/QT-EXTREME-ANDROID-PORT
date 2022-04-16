@@ -2329,7 +2329,7 @@ class PlayState extends MusicBeatState
 
 	        #if android
 	        androidc.visible = true;
-		if (SONG.song.toLowerCase() == 'censory-superload' || 'expurgation' || 'extermination' || 'milf' || 'tutorial')
+		if (SONG.song.toLowerCase() == 'extermination')
 		{
 			_virtualpad.visible = true;
 		}
@@ -4618,7 +4618,7 @@ class PlayState extends MusicBeatState
 		vocals.volume = 0;
                 #if android
 	        androidc.visible = false;
-		if (SONG.song.toLowerCase() == 'censory-superload' || 'expurgation' || 'extermination' || 'milf' || 'tutorial')
+		if (SONG.song.toLowerCase() == 'extermination')
 		{
 			_virtualpad.visible = false;
 		}

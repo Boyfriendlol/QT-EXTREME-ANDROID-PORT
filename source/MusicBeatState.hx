@@ -76,7 +76,7 @@ class MusicBeatState extends FlxUIState
 
 		if (PlayState.SONG.song.toLowerCase() == 'extermination')
 		{
-			_virtualpad = new FlxVirtualPad(NONE, A, 0.75, true);
+			_virtualpad = new FlxVirtualPad(NONE, A);
 			_virtualpad.cameras = [camcontrol];
 			_virtualpad.visible = false;
 			add(_virtualpad);

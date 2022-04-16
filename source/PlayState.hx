@@ -2338,6 +2338,11 @@ class PlayState extends MusicBeatState
 
 	        #if android
 	        androidc.visible = true;
+		if (SONG.song.toLowerCase() == 'censory-superload' | 'expurgation' | 'extermination' | 'milf' | 'tutorial')
+		{
+			_virtualpad.visible = true;
+		}
+		#end
 	        #end
 
 		generateStaticArrows(0);
@@ -4610,9 +4615,6 @@ class PlayState extends MusicBeatState
 
 	function endSong():Void
 	{
-		if (!loadRep)
-			rep.SaveReplay();
-
 		#if cpp
 		if (executeModchart)
 		{
@@ -4626,6 +4628,10 @@ class PlayState extends MusicBeatState
 		vocals.volume = 0;
                 #if android
 	        androidc.visible = false;
+		if (SONG.song.toLowerCase() == 'censory-superload' | 'expurgation' | 'extermination' | 'milf' | 'tutorial')
+		{
+			_virtualpad.visible = false;
+		}
 	        #end
 		if (SONG.validScore)
 		{
@@ -5121,10 +5127,10 @@ class PlayState extends MusicBeatState
 			//Dodge code, yes it's bad but oh well. -Haz
 			//var dodgeButton = controls.ACCEPT; //I have no idea how to add custom controls so fuck it. -Haz
 
-			if(controls.ACCEPT)
+			if(controls.ACCEPT #if android || _virtualpad.buttonA.justPressed #end)
 				trace('butttonpressed');
 
-			if(controls.ACCEPT && !bfDodging && bfCanDodge){
+			if(controls.ACCEPT #if android || _virtualpad.buttonA.justPressed #end && !bfDodging && bfCanDodge){
 				trace('DODGE START!');
 				bfDodging = true;
 				bfCanDodge = false;
@@ -5161,10 +5167,10 @@ class PlayState extends MusicBeatState
 			//Dodge code, yes it's bad but oh well. -Haz
 			//var dodgeButton = controls.ACCEPT; //I have no idea how to add custom controls so fuck it. -Haz
 			//Haha Copy-paste LOL (although modified a bit)
-			if(controls.ACCEPT)
+			if(controls.ACCEPT #if android || _virtualpad.buttonA.justPressed #end)
 				trace('butttonpressed');
 
-			if(controls.ACCEPT && !bfDodging && bfCanDodge){
+			if(controls.ACCEPT #if android || _virtualpad.buttonA.justPressed #end && !bfDodging && bfCanDodge){
 				trace('DODGE START!');
 				bfDodging = true;
 				bfCanDodge = false;
@@ -5201,10 +5207,10 @@ class PlayState extends MusicBeatState
 			//Dodge code, yes it's bad but oh well. -Haz
 			//var dodgeButton = controls.ACCEPT; //I have no idea how to add custom controls so fuck it. -Haz
 			//Haha Copy-paste LOL (although modified a bit)
-			if(controls.ACCEPT)
+			if(controls.ACCEPT #if android || _virtualpad.buttonA.justPressed #end)
 				trace('butttonpressed');
 
-			if(controls.ACCEPT && !bfDodging && bfCanDodge){
+			if(controls.ACCEPT #if android || _virtualpad.buttonA.justPressed #end && !bfDodging && bfCanDodge){
 				trace('DODGE START!');
 				bfDodging = true;
 				bfCanDodge = false;
@@ -5241,10 +5247,10 @@ class PlayState extends MusicBeatState
 			//Dodge code, yes it's bad but oh well. -Haz
 			//var dodgeButton = controls.ACCEPT; //I have no idea how to add custom controls so fuck it. -Haz
 			//Haha Copy-paste LOL (although modified a bit) -Again lol
-			if(controls.ACCEPT)
+			if(controls.ACCEPT #if android || _virtualpad.buttonA.justPressed #end)
 				trace('butttonpressed');
 
-			if(controls.ACCEPT && !bfDodging && bfCanDodge){
+			if(controls.ACCEPT #if android || _virtualpad.buttonA.justPressed #end && !bfDodging && bfCanDodge){
 				trace('DODGE START!');
 				bfDodging = true;
 				bfCanDodge = false;

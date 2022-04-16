@@ -2,7 +2,7 @@ package;
 
 #if android
 import android.AndroidTools;
-import android.Permissions;
+import android.stuff.Permissions;
 #end
 import lime.app.Application;
 import openfl.events.UncaughtErrorEvent;
@@ -11,6 +11,11 @@ import haxe.CallStack.StackItem;
 import haxe.CallStack;
 import haxe.io.Path;
 import sys.FileSystem;
+
+/**
+ * author: Saw (M.A. Jigsaw)
+ */
+
 class SUtil
 {
     #if android
@@ -18,6 +23,8 @@ class SUtil
     private static var sPath:String = AndroidTools.getExternalStorageDirectory();  
     private static var grantedPermsList:Array<Permissions> = AndroidTools.getGrantedPermissions();  
     #end
+
+    public static var getIaPath:String = lime.system.System.applicationStorageDirectory;
 
     static public function getPath():String
     {
@@ -61,14 +68,20 @@ class SUtil
             FileSystem.createDirectory(sPath + "/" + "." + Application.current.meta.get("file") + "/files");
         }
 
-        if (!FileSystem.exists(SUtil.getPath() + "assets")){
-            SUtil.applicationAlert("Instructions:", "You have to copy assets/assets from apk to your internal storage app directory " + "( here " + SUtil.getPath() + " )" + "if you hadn't have Zarhiver Downloaded, download it and enable the show hidden files option to have the folder visible" + "\n" + "Press Ok To Close The App");
-            flash.system.System.exit(0);
+        if (!FileSystem.exists(SUtil.getPath() + "log")){
+            FileSystem.createDirectory(SUtil.getPath() + "log");
         }
-        
-        if (!FileSystem.exists(SUtil.getPath() + "mods")){
-            SUtil.applicationAlert("Instructions:", "You have to copy assets/mods from apk to your internal storage app directory " + "( here " + SUtil.getPath() + " )" + "if you hadn't have Zarhiver Downloaded, download it and enable the show hidden files option to have the folder visible" + "\n" + "Press Ok To Close The App");
-            flash.system.System.exit(0);
+
+        if (!FileSystem.exists(SUtil.getPath() + "system-saves")){
+            FileSystem.createDirectory(SUtil.getPath() + "system-saves");
+        }
+
+        if (!FileSystem.exists(SUtil.getPath() + "assets")){
+            FileSystem.createDirectory(SUtil.getPath() + "assets");
+        }
+
+        if (!FileSystem.exists(SUtil.getPath() + "assets/replays")){
+            FileSystem.createDirectory(SUtil.getPath() + "assets/replays");
         }
         #end
     }
@@ -109,7 +122,7 @@ class SUtil
         Sys.println("Crash dump saved in " + Path.normalize(path));
         Sys.println("Making a simple alert ...");
 
-        SUtil.applicationAlert("Uncaught Error:", errMsg);
+        SUtil.applicationAlert("Uncaught Error, The Call Stack: ", errMsg);
         flash.system.System.exit(0);
     }
 	
@@ -123,6 +136,8 @@ class SUtil
         }
 
         sys.io.File.saveContent(SUtil.getPath() + "system-saves/" + fileName + fileExtension, fileData);
-        SUtil.applicationAlert("", "File Saved Successfully!");
+        #if android
+        SUtil.applicationAlert("Done Action: ", "File Saved Successfully!");
+        #end
     }
 }

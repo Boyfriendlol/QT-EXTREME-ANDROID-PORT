@@ -120,8 +120,8 @@
 	<haxelib name="faxe" if='switch'/>
 	<haxelib name="discord_rpc" if="windows"/>
 	<haxelib name="linc_luajit"/>
-        <haxelib name="extension-webview" if="android"/>
-        <haxelib name="AndroidTools" if="android"/>
+        <haxelib name="extension-videoview" if="android"/>
+        <haxelib name="extension-androidtools" if="android"/>
 
         <config:android permission="android.permission.READ_EXTERNAL_STORAGE" if="android"/>
         <config:android permission="android.permission.WRITE_EXTERNAL_STORAGE" if="android"/>

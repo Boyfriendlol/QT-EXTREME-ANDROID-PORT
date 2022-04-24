@@ -53,11 +53,6 @@ class TitleState extends MusicBeatState
 		FlxG.android.preventDefaultKeys = [BACK];
 		#end
 
-		#if sys
-		if (!sys.FileSystem.exists(SUtil.getPath() + "assets/replays"))
-			sys.FileSystem.createDirectory(SUtil.getPath() + "assets/replays");
-		#end
-
 		FlxGraphic.defaultPersist = true; //Alright, somebody in the community said this will help with caching... Hopefuly it doesn't break anything.
 		//Note to self though, this will break "destroyOnNotUse" so remember to disable persist on any graphics you want to destroy when not being used.
 

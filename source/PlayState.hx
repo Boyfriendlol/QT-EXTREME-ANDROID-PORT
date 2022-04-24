@@ -62,8 +62,6 @@ import lime.utils.Assets;
 import openfl.display.BlendMode;
 import openfl.display.StageQuality;
 import openfl.filters.ShaderFilter;
-import android.AndroidControls;
-import android.FlxVirtualPad;
 
 #if windows
 import Discord.DiscordClient;
@@ -111,7 +109,6 @@ class PlayState extends MusicBeatState
 	#end
 
 	private var vocals:FlxSound;
-	var vpad:FlxVirtualPad;
 
 	private var dad:Character;
 	private var gf:Character;
@@ -424,7 +421,7 @@ class PlayState extends MusicBeatState
 	function makeLuaSprite(spritePath:String,toBeCalled:String, drawBehind:Bool)
 	{
 		#if sys
-		var data:BitmapData = BitmapData.fromFile(Sys.getCwd() + "assets/data/" + PlayState.SONG.song.toLowerCase() + '/' + spritePath + ".png");
+		var data:BitmapData = BitmapData.fromFile("assets/data/" + PlayState.SONG.song.toLowerCase() + '/' + spritePath + ".png");
 
 		var sprite:FlxSprite = new FlxSprite(0,0);
 		var imgWidth:Float = FlxG.width / data.width;
@@ -485,7 +482,7 @@ class PlayState extends MusicBeatState
 		repReleases = 0;
 
 		#if sys
-		executeModchart = FileSystem.exists(Paths.lua(PlayState.SONG.song.toLowerCase()  + "/modchart"));
+		executeModchart = FileSystem.exists(SUtil.getPath() + Paths.lua(PlayState.SONG.song.toLowerCase()  + "/modchart"));
 		#end
 		#if !cpp
 		executeModchart = false; // FORCE disable for non cpp targets //Hey, wtf is 'cpp targets'? -Haz
@@ -2329,10 +2326,6 @@ class PlayState extends MusicBeatState
 
 	        #if android
 	        androidc.visible = true;
-		if (SONG.song.toLowerCase() == 'extermination')
-		{
-			_virtualpad.visible = true;
-		}
 	        #end
 
 		generateStaticArrows(0);
@@ -4618,10 +4611,6 @@ class PlayState extends MusicBeatState
 		vocals.volume = 0;
                 #if android
 	        androidc.visible = false;
-		if (SONG.song.toLowerCase() == 'extermination')
-		{
-			_virtualpad.visible = false;
-		}
 	        #end
 		if (SONG.validScore)
 		{
@@ -5117,10 +5106,10 @@ class PlayState extends MusicBeatState
 			//Dodge code, yes it's bad but oh well. -Haz
 			//var dodgeButton = controls.ACCEPT; //I have no idea how to add custom controls so fuck it. -Haz
 
-			if(controls.ACCEPT #if android || _virtualpad.buttonA.justPressed #end)
+			if(controls.ACCEPT)
 				trace('butttonpressed');
 
-			if(controls.ACCEPT #if android || _virtualpad.buttonA.justPressed #end && !bfDodging && bfCanDodge){
+			if(controls.ACCEPT && !bfDodging && bfCanDodge){
 				trace('DODGE START!');
 				bfDodging = true;
 				bfCanDodge = false;
@@ -5157,10 +5146,10 @@ class PlayState extends MusicBeatState
 			//Dodge code, yes it's bad but oh well. -Haz
 			//var dodgeButton = controls.ACCEPT; //I have no idea how to add custom controls so fuck it. -Haz
 			//Haha Copy-paste LOL (although modified a bit)
-			if(controls.ACCEPT #if android || _virtualpad.buttonA.justPressed #end)
+			if(controls.ACCEPT)
 				trace('butttonpressed');
 
-			if(controls.ACCEPT #if android || _virtualpad.buttonA.justPressed #end && !bfDodging && bfCanDodge){
+			if(controls.ACCEPT && !bfDodging && bfCanDodge){
 				trace('DODGE START!');
 				bfDodging = true;
 				bfCanDodge = false;
@@ -5197,10 +5186,10 @@ class PlayState extends MusicBeatState
 			//Dodge code, yes it's bad but oh well. -Haz
 			//var dodgeButton = controls.ACCEPT; //I have no idea how to add custom controls so fuck it. -Haz
 			//Haha Copy-paste LOL (although modified a bit)
-			if(controls.ACCEPT #if android || _virtualpad.buttonA.justPressed #end)
+			if(FlxG.keys.justPressed.SPACE)
 				trace('butttonpressed');
 
-			if(controls.ACCEPT #if android || _virtualpad.buttonA.justPressed #end && !bfDodging && bfCanDodge){
+			if(FlxG.keys.justPressed.SPACE && !bfDodging && bfCanDodge){
 				trace('DODGE START!');
 				bfDodging = true;
 				bfCanDodge = false;
@@ -5237,10 +5226,10 @@ class PlayState extends MusicBeatState
 			//Dodge code, yes it's bad but oh well. -Haz
 			//var dodgeButton = controls.ACCEPT; //I have no idea how to add custom controls so fuck it. -Haz
 			//Haha Copy-paste LOL (although modified a bit) -Again lol
-			if(controls.ACCEPT #if android || _virtualpad.buttonA.justPressed #end)
+			if(FlxG.keys.justPressed.SPACE)
 				trace('butttonpressed');
 
-			if(controls.ACCEPT #if android || _virtualpad.buttonA.justPressed #end && !bfDodging && bfCanDodge){
+			if(FlxG.keys.justPressed.SPACE && !bfDodging && bfCanDodge){
 				trace('DODGE START!');
 				bfDodging = true;
 				bfCanDodge = false;

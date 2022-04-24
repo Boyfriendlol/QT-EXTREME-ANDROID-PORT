@@ -482,7 +482,7 @@ class PlayState extends MusicBeatState
 		repReleases = 0;
 
 		#if sys
-		executeModchart = FileSystem.exists(SUtil.getPath() + Paths.lua(PlayState.SONG.song.toLowerCase()  + "/modchart"));
+		executeModchart = FileSystem.exists(Paths.lua(PlayState.SONG.song.toLowerCase()  + "/modchart"));
 		#end
 		#if !cpp
 		executeModchart = false; // FORCE disable for non cpp targets //Hey, wtf is 'cpp targets'? -Haz
@@ -1945,7 +1945,7 @@ class PlayState extends MusicBeatState
 
 		// startCountdown();
 
-		generateSong(SUtil.getPath() + SONG.song);
+		generateSong(SONG.song);
 
 		// add(strumLine);
 
@@ -2916,10 +2916,10 @@ class PlayState extends MusicBeatState
 		// Per song offset check
 		#if cpp
 			var songPath = 'assets/data/' + PlayState.SONG.song.toLowerCase() + '/';
-			for(file in sys.FileSystem.readDirectory(SUtil.getPath() + songPath))
+			for(file in sys.FileSystem.readDirectory(songPath))
 			{
 				var path = haxe.io.Path.join([songPath, file]);
-				if(!sys.FileSystem.isDirectory(SUtil.getPath() + path))
+				if(!sys.FileSystem.isDirectory(path))
 				{
 					if(path.endsWith('.offset'))
 					{
@@ -2928,7 +2928,7 @@ class PlayState extends MusicBeatState
 						break;
 					}else {
 						trace('Offset file not found. Creating one @: ' + songPath);
-						sys.io.File.saveContent(SUtil.getPath() + songPath + songOffset + '.offset', '');
+						sys.io.File.saveContent(songPath + songOffset + '.offset', '');
 					}
 				}
 			}
